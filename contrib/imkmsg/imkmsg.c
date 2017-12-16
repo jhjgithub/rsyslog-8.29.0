@@ -153,7 +153,7 @@ rsRetVal Syslog(syslog_pri_t priority, uchar *pMsg, struct timeval *tp, struct j
  * It would probably be a good idea to extend the interface to support it, but so far
  * we create a (sufficiently valid) work-around. -- rgerhards, 2008-11-24
  */
-int klog_getMaxLine(void)
+int nslog_getMaxLine(void)
 {
 	return glbl.GetMaxLine();
 }

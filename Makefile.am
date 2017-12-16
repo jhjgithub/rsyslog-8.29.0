@@ -45,6 +45,7 @@ endif
 
 if ENABLE_IMKLOG
 SUBDIRS += plugins/imklog
+SUBDIRS += plugins/imnslog
 endif
 
 if ENABLE_IMKMSG

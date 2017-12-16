@@ -92,7 +92,7 @@ build_triplet = @build@
 host_triplet = @host@
 sbin_PROGRAMS =
 @ENABLE_RSYSLOGD_TRUE@am__append_1 = tools
-@ENABLE_IMKLOG_TRUE@am__append_2 = plugins/imklog
+@ENABLE_IMKLOG_TRUE@am__append_2 = plugins/imklog plugins/imnslog
 @ENABLE_IMKMSG_TRUE@am__append_3 = contrib/imkmsg
 @ENABLE_IMPSTATS_TRUE@am__append_4 = plugins/impstats
 @ENABLE_IMSOLARIS_TRUE@am__append_5 = plugins/imsolaris
@@ -264,26 +264,26 @@ CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = compat runtime grammar . plugins/immark \
 	plugins/imuxsock plugins/imtcp plugins/imudp plugins/omtesting \
-	plugins/mmexternal tools plugins/imklog contrib/imkmsg \
-	plugins/impstats plugins/imsolaris plugins/omgssapi \
-	plugins/imgssapi plugins/omrelp plugins/imrelp plugins/ommysql \
-	plugins/omlibdbi plugins/ompgsql plugins/omsnmp \
-	plugins/omstdout contrib/pmcisconames plugins/pmciscoios \
-	plugins/pmnull plugins/pmnormalize contrib/pmaixforwardedfrom \
-	contrib/pmsnare contrib/pmpanngfw plugins/pmlastmsg \
-	plugins/omruleset plugins/omudpspoof plugins/ommongodb \
-	contrib/omhiredis contrib/omzmq3 contrib/omczmq \
-	contrib/omrabbitmq contrib/imzmq3 contrib/imczmq \
-	plugins/omuxsock plugins/omhdfs plugins/omjournal \
-	plugins/imjournal plugins/omelasticsearch plugins/mmsnmptrapd \
-	plugins/imfile plugins/imptcp plugins/imdiag plugins/ommail \
-	plugins/omkafka plugins/imkafka plugins/omprog plugins/im3195 \
-	plugins/mmnormalize plugins/mmjsonparse contrib/mmgrok \
-	plugins/mmaudit plugins/mmanon plugins/mmrm1stspace \
-	plugins/mmutf8fix contrib/mmcount contrib/mmsequence \
-	plugins/mmdblookup plugins/mmfields plugins/mmpstrucdata \
-	contrib/mmrfc5424addhmac contrib/omhttpfs contrib/omamqp1 \
-	contrib/omtcl tests
+	plugins/mmexternal tools plugins/imklog plugins/imnslog \
+	contrib/imkmsg plugins/impstats plugins/imsolaris \
+	plugins/omgssapi plugins/imgssapi plugins/omrelp \
+	plugins/imrelp plugins/ommysql plugins/omlibdbi \
+	plugins/ompgsql plugins/omsnmp plugins/omstdout \
+	contrib/pmcisconames plugins/pmciscoios plugins/pmnull \
+	plugins/pmnormalize contrib/pmaixforwardedfrom contrib/pmsnare \
+	contrib/pmpanngfw plugins/pmlastmsg plugins/omruleset \
+	plugins/omudpspoof plugins/ommongodb contrib/omhiredis \
+	contrib/omzmq3 contrib/omczmq contrib/omrabbitmq \
+	contrib/imzmq3 contrib/imczmq plugins/omuxsock plugins/omhdfs \
+	plugins/omjournal plugins/imjournal plugins/omelasticsearch \
+	plugins/mmsnmptrapd plugins/imfile plugins/imptcp \
+	plugins/imdiag plugins/ommail plugins/omkafka plugins/imkafka \
+	plugins/omprog plugins/im3195 plugins/mmnormalize \
+	plugins/mmjsonparse contrib/mmgrok plugins/mmaudit \
+	plugins/mmanon plugins/mmrm1stspace plugins/mmutf8fix \
+	contrib/mmcount contrib/mmsequence plugins/mmdblookup \
+	plugins/mmfields plugins/mmpstrucdata contrib/mmrfc5424addhmac \
+	contrib/omhttpfs contrib/omamqp1 contrib/omtcl tests
 am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in AUTHORS \
 	COPYING COPYING.LESSER ChangeLog INSTALL NEWS README compile \
 	config.guess config.sub depcomp install-sh ltmain.sh missing \
@@ -379,8 +379,6 @@ INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 IP = @IP@
-JAVA = @JAVA@
-JAVAC = @JAVAC@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LEX = @LEX@
@@ -473,12 +471,8 @@ STRIP = @STRIP@
 TCL_INCLUDE_SPEC = @TCL_INCLUDE_SPEC@
 UDPSPOOF_CFLAGS = @UDPSPOOF_CFLAGS@
 UDPSPOOF_LIBS = @UDPSPOOF_LIBS@
-UUDECODE = @UUDECODE@
 VALGRIND = @VALGRIND@
 VERSION = @VERSION@
-WARN_CFLAGS = @WARN_CFLAGS@
-WARN_LDFLAGS = @WARN_LDFLAGS@
-WARN_SCANNERFLAGS = @WARN_SCANNERFLAGS@
 WGET = @WGET@
 YACC = @YACC@
 YACC_FOUND = @YACC_FOUND@

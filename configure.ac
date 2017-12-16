@@ -2064,6 +2064,7 @@ AC_CONFIG_FILES([Makefile \
 		plugins/imjournal/Makefile \
 		plugins/immark/Makefile \
 		plugins/imklog/Makefile \
+		plugins/imnslog/Makefile \
 		plugins/omhdfs/Makefile \
 		plugins/omkafka/Makefile \
 		plugins/omprog/Makefile \

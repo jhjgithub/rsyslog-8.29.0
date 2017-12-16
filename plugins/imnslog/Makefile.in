@@ -88,11 +88,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-
-# select klog "driver"
-@ENABLE_IMKLOG_BSD_TRUE@am__append_1 = bsd.c
-@ENABLE_IMKLOG_LINUX_TRUE@am__append_2 = bsd.c
-subdir = plugins/imklog
+subdir = plugins/imnslog
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ac_check_define.m4 \
 	$(top_srcdir)/m4/atomic_operations.m4 \
@@ -136,20 +132,16 @@ am__uninstall_files_from_dir = { \
   }
 am__installdirs = "$(DESTDIR)$(pkglibdir)"
 LTLIBRARIES = $(pkglib_LTLIBRARIES)
-imklog_la_DEPENDENCIES =
-am__imklog_la_SOURCES_DIST = imklog.c imklog.h bsd.c
-@ENABLE_IMKLOG_BSD_TRUE@am__objects_1 = imklog_la-bsd.lo
-@ENABLE_IMKLOG_LINUX_TRUE@am__objects_2 = imklog_la-bsd.lo
-am_imklog_la_OBJECTS = imklog_la-imklog.lo $(am__objects_1) \
-	$(am__objects_2)
-imklog_la_OBJECTS = $(am_imklog_la_OBJECTS)
+imnslog_la_DEPENDENCIES =
+am_imnslog_la_OBJECTS = imnslog_la-imnslog.lo imnslog_la-bsd.lo
+imnslog_la_OBJECTS = $(am_imnslog_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-imklog_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+imnslog_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(imklog_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(imnslog_la_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -184,8 +176,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(imklog_la_SOURCES)
-DIST_SOURCES = $(am__imklog_la_SOURCES_DIST)
+SOURCES = $(imnslog_la_SOURCES)
+DIST_SOURCES = $(imnslog_la_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -416,11 +408,11 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-pkglib_LTLIBRARIES = imklog.la
-imklog_la_SOURCES = imklog.c imklog.h $(am__append_1) $(am__append_2)
-imklog_la_CPPFLAGS = -I$(top_srcdir) $(PTHREADS_CFLAGS) $(RSRT_CFLAGS) $(LIBLOGGING_STDLOG_CFLAGS)
-imklog_la_LDFLAGS = -module -avoid-version $(LIBLOGGING_STDLOG_LIBS)
-imklog_la_LIBADD = 
+pkglib_LTLIBRARIES = imnslog.la
+imnslog_la_SOURCES = imnslog.c bsd.c imnslog.h
+imnslog_la_CPPFLAGS = -I$(top_srcdir) $(PTHREADS_CFLAGS) $(RSRT_CFLAGS) $(LIBLOGGING_STDLOG_CFLAGS)
+imnslog_la_LDFLAGS = -module -avoid-version $(LIBLOGGING_STDLOG_LIBS)
+imnslog_la_LIBADD = 
 all: all-am
 
 .SUFFIXES:
@@ -434,9 +426,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu plugins/imklog/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu plugins/imnslog/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu plugins/imklog/Makefile
+	  $(AUTOMAKE) --gnu plugins/imnslog/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -490,8 +482,8 @@ clean-pkglibLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 
-imklog.la: $(imklog_la_OBJECTS) $(imklog_la_DEPENDENCIES) $(EXTRA_imklog_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(imklog_la_LINK) -rpath $(pkglibdir) $(imklog_la_OBJECTS) $(imklog_la_LIBADD) $(LIBS)
+imnslog.la: $(imnslog_la_OBJECTS) $(imnslog_la_DEPENDENCIES) $(EXTRA_imnslog_la_DEPENDENCIES) 
+	$(AM_V_CCLD)$(imnslog_la_LINK) -rpath $(pkglibdir) $(imnslog_la_OBJECTS) $(imnslog_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -499,8 +491,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/imklog_la-bsd.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/imklog_la-imklog.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/imnslog_la-bsd.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/imnslog_la-imnslog.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -526,19 +518,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
 
-imklog_la-imklog.lo: imklog.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(imklog_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT imklog_la-imklog.lo -MD -MP -MF $(DEPDIR)/imklog_la-imklog.Tpo -c -o imklog_la-imklog.lo `test -f 'imklog.c' || echo '$(srcdir)/'`imklog.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/imklog_la-imklog.Tpo $(DEPDIR)/imklog_la-imklog.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='imklog.c' object='imklog_la-imklog.lo' libtool=yes @AMDEPBACKSLASH@
+imnslog_la-imnslog.lo: imnslog.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(imnslog_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT imnslog_la-imnslog.lo -MD -MP -MF $(DEPDIR)/imnslog_la-imnslog.Tpo -c -o imnslog_la-imnslog.lo `test -f 'imnslog.c' || echo '$(srcdir)/'`imnslog.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/imnslog_la-imnslog.Tpo $(DEPDIR)/imnslog_la-imnslog.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='imnslog.c' object='imnslog_la-imnslog.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(imklog_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o imklog_la-imklog.lo `test -f 'imklog.c' || echo '$(srcdir)/'`imklog.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(imnslog_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o imnslog_la-imnslog.lo `test -f 'imnslog.c' || echo '$(srcdir)/'`imnslog.c
 
-imklog_la-bsd.lo: bsd.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(imklog_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT imklog_la-bsd.lo -MD -MP -MF $(DEPDIR)/imklog_la-bsd.Tpo -c -o imklog_la-bsd.lo `test -f 'bsd.c' || echo '$(srcdir)/'`bsd.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/imklog_la-bsd.Tpo $(DEPDIR)/imklog_la-bsd.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='bsd.c' object='imklog_la-bsd.lo' libtool=yes @AMDEPBACKSLASH@
+imnslog_la-bsd.lo: bsd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(imnslog_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT imnslog_la-bsd.lo -MD -MP -MF $(DEPDIR)/imnslog_la-bsd.Tpo -c -o imnslog_la-bsd.lo `test -f 'bsd.c' || echo '$(srcdir)/'`bsd.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/imnslog_la-bsd.Tpo $(DEPDIR)/imnslog_la-bsd.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='bsd.c' object='imnslog_la-bsd.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(imklog_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o imklog_la-bsd.lo `test -f 'bsd.c' || echo '$(srcdir)/'`bsd.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(imnslog_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o imnslog_la-bsd.lo `test -f 'bsd.c' || echo '$(srcdir)/'`bsd.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

@@ -1,3 +1,6 @@
+
+ubuntu-17.04:
+
 libestr-dev
 libfastjson-dev
 uuid-dev

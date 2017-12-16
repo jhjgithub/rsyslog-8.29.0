@@ -486,6 +486,8 @@ operation not carried out */
 	RS_RET_JSON_UNUSABLE = -2438, /**< JSON object is NULL or otherwise unusable */
 	RS_RET_OPERATION_STATUS = -2439, /**< operational status (info) message, no error */
 
+	RS_RET_ERR_OPEN_NSLOG = -2200, /**< error opening or reading the NetShield kernel log ring */
+
 	/* RainerScript error messages (range 1000.. 1999) */
 	RS_RET_SYSVAR_NOT_FOUND = 1001, /**< system variable could not be found (maybe misspelled) */
 	RS_RET_FIELD_NOT_FOUND = 1002, /**< field() function did not find requested field */
