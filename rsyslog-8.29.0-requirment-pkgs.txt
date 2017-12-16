@@ -1,0 +1,6 @@
+libestr-dev
+libfastjson-dev
+uuid-dev
+ulibgcrypt20-dev
+liblogging-stdlog-dev
+
